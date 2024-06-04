@@ -19,6 +19,15 @@
         where id = #{id}
     </update>
 
+    <update id="editPassword">
+        update employee
+        <set>
+            <if test="newPassword != null">password = #{newPassword},</if>
+        </set>
+        where id = #{empId}
+        and password = #{oldPassword}
+    </update>
+
 
     <select id="pageQuery" resultType="com.sky.entity.Employee">
         select * from employee
